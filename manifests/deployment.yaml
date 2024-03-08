@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-course
+  labels:
+    app: demo-course
+  namespace: demo-aks-course
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-course
+  template:
+    metadata:
+      labels:
+        app: demo-course
+    spec:
+      containers:
+        - name: demo-course
+          image: azurecicdcr.azurecr.io/demo-1709891536903:latest
+          ports:
+            - containerPort: 5000
